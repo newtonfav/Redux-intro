@@ -26,7 +26,7 @@ export default function accountReducer(state = initialStateAccount, action) {
         balance: state.balance + action.payload.amount,
       };
 
-    case "account/payLoan":
+    case "account/paybackLoan":
       return {
         ...state,
         loan: 0,
@@ -48,10 +48,10 @@ export function withdraw(amount) {
   return { type: "account/withdraw", payload: amount };
 }
 
-export function requestLoan(amount) {
+export function requestLoan(amount, loanPurpose) {
   return {
     type: "account/requestLoan",
-    payload: { amount: 1000, loanPurpose: "Build a house" },
+    payload: { amount, loanPurpose },
   };
 }
 
